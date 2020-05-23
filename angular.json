@@ -1,0 +1,284 @@
+{
+  "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
+  "version": 1,
+  "newProjectRoot": "projects",
+  "projects": {
+    "lib-genericos": {
+      "projectType": "library",
+      "root": "projects/lib-genericos",
+      "sourceRoot": "projects/lib-genericos/src",
+      "prefix": "lib",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-ng-packagr:build",
+          "options": {
+            "tsConfig": "projects/lib-genericos/tsconfig.lib.json",
+            "project": "projects/lib-genericos/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "tsConfig": "projects/lib-genericos/tsconfig.lib.prod.json"
+            }
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/lib-genericos/src/test.ts",
+            "tsConfig": "projects/lib-genericos/tsconfig.spec.json",
+            "karmaConfig": "projects/lib-genericos/karma.conf.js"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "projects/lib-genericos/tsconfig.lib.json",
+              "projects/lib-genericos/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        }
+      }
+    },
+    "lib-genricos-example": {
+      "projectType": "application",
+      "schematics": {},
+      "root": "projects/lib-genricos-example",
+      "sourceRoot": "projects/lib-genricos-example/src",
+      "prefix": "app",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:browser",
+          "options": {
+            "outputPath": "dist/lib-genricos-example",
+            "index": "projects/lib-genricos-example/src/index.html",
+            "main": "projects/lib-genricos-example/src/main.ts",
+            "polyfills": "projects/lib-genricos-example/src/polyfills.ts",
+            "tsConfig": "projects/lib-genricos-example/tsconfig.app.json",
+            "aot": true,
+            "assets": [
+              "projects/lib-genricos-example/src/favicon.ico",
+              "projects/lib-genricos-example/src/assets"
+            ],
+            "styles": [
+              "projects/lib-genricos-example/src/styles.css"
+            ],
+            "scripts": []
+          },
+          "configurations": {
+            "production": {
+              "fileReplacements": [
+                {
+                  "replace": "projects/lib-genricos-example/src/environments/environment.ts",
+                  "with": "projects/lib-genricos-example/src/environments/environment.prod.ts"
+                }
+              ],
+              "optimization": true,
+              "outputHashing": "all",
+              "sourceMap": false,
+              "extractCss": true,
+              "namedChunks": false,
+              "extractLicenses": true,
+              "vendorChunk": false,
+              "buildOptimizer": true,
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "2mb",
+                  "maximumError": "5mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "6kb",
+                  "maximumError": "10kb"
+                }
+              ]
+            }
+          }
+        },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "options": {
+            "browserTarget": "lib-genricos-example:build"
+          },
+          "configurations": {
+            "production": {
+              "browserTarget": "lib-genricos-example:build:production"
+            }
+          }
+        },
+        "extract-i18n": {
+          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "options": {
+            "browserTarget": "lib-genricos-example:build"
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/lib-genricos-example/src/test.ts",
+            "polyfills": "projects/lib-genricos-example/src/polyfills.ts",
+            "tsConfig": "projects/lib-genricos-example/tsconfig.spec.json",
+            "karmaConfig": "projects/lib-genricos-example/karma.conf.js",
+            "assets": [
+              "projects/lib-genricos-example/src/favicon.ico",
+              "projects/lib-genricos-example/src/assets"
+            ],
+            "styles": [
+              "projects/lib-genricos-example/src/styles.css"
+            ],
+            "scripts": []
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "projects/lib-genricos-example/tsconfig.app.json",
+              "projects/lib-genricos-example/tsconfig.spec.json",
+              "projects/lib-genricos-example/e2e/tsconfig.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        },
+        "e2e": {
+          "builder": "@angular-devkit/build-angular:protractor",
+          "options": {
+            "protractorConfig": "projects/lib-genricos-example/e2e/protractor.conf.js",
+            "devServerTarget": "lib-genricos-example:serve"
+          },
+          "configurations": {
+            "production": {
+              "devServerTarget": "lib-genricos-example:serve:production"
+            }
+          }
+        }
+      }
+    },
+    "lib-genericos-example": {
+      "projectType": "application",
+      "schematics": {},
+      "root": "projects/lib-genericos-example",
+      "sourceRoot": "projects/lib-genericos-example/src",
+      "prefix": "app",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:browser",
+          "options": {
+            "outputPath": "dist/lib-genericos-example",
+            "index": "projects/lib-genericos-example/src/index.html",
+            "main": "projects/lib-genericos-example/src/main.ts",
+            "polyfills": "projects/lib-genericos-example/src/polyfills.ts",
+            "tsConfig": "projects/lib-genericos-example/tsconfig.app.json",
+            "aot": true,
+            "assets": [
+              "projects/lib-genericos-example/src/favicon.ico",
+              "projects/lib-genericos-example/src/assets"
+            ],
+            "styles": [
+              "projects/lib-genericos-example/src/styles.css"
+            ],
+            "scripts": []
+          },
+          "configurations": {
+            "production": {
+              "fileReplacements": [
+                {
+                  "replace": "projects/lib-genericos-example/src/environments/environment.ts",
+                  "with": "projects/lib-genericos-example/src/environments/environment.prod.ts"
+                }
+              ],
+              "optimization": true,
+              "outputHashing": "all",
+              "sourceMap": false,
+              "extractCss": true,
+              "namedChunks": false,
+              "extractLicenses": true,
+              "vendorChunk": false,
+              "buildOptimizer": true,
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "2mb",
+                  "maximumError": "5mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "6kb",
+                  "maximumError": "10kb"
+                }
+              ]
+            }
+          }
+        },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "options": {
+            "browserTarget": "lib-genericos-example:build"
+          },
+          "configurations": {
+            "production": {
+              "browserTarget": "lib-genericos-example:build:production"
+            }
+          }
+        },
+        "extract-i18n": {
+          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "options": {
+            "browserTarget": "lib-genericos-example:build"
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/lib-genericos-example/src/test.ts",
+            "polyfills": "projects/lib-genericos-example/src/polyfills.ts",
+            "tsConfig": "projects/lib-genericos-example/tsconfig.spec.json",
+            "karmaConfig": "projects/lib-genericos-example/karma.conf.js",
+            "assets": [
+              "projects/lib-genericos-example/src/favicon.ico",
+              "projects/lib-genericos-example/src/assets"
+            ],
+            "styles": [
+              "projects/lib-genericos-example/src/styles.css"
+            ],
+            "scripts": []
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "projects/lib-genericos-example/tsconfig.app.json",
+              "projects/lib-genericos-example/tsconfig.spec.json",
+              "projects/lib-genericos-example/e2e/tsconfig.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        },
+        "e2e": {
+          "builder": "@angular-devkit/build-angular:protractor",
+          "options": {
+            "protractorConfig": "projects/lib-genericos-example/e2e/protractor.conf.js",
+            "devServerTarget": "lib-genericos-example:serve"
+          },
+          "configurations": {
+            "production": {
+              "devServerTarget": "lib-genericos-example:serve:production"
+            }
+          }
+        }
+      }
+    }},
+  "cli": {
+    "analytics": false
+  },
+  "defaultProject": "lib-genericos"
+}
